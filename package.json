@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/asalga/ShadowCall#readme",
   "devDependencies": {
+    "generator-phaser-browserify": "^0.3.6",
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
     "grunt-contrib-clean": "^1.0.0",
@@ -24,7 +25,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
-    "generator-phaser-browserify": "^0.3.6"
+    "yo": "^1.7.0"
   },
   "dependencies": {
     "lodash": "^4.6.1"
