@@ -5,6 +5,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-jade');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	grunt.initConfig({
 
@@ -29,6 +31,31 @@ module.exports = function(grunt) {
 			}
 		},
 
+		clean: ['<%= config.build %>'],
+
+		copy: {
+			dev: {
+				files: [
+
+					// IMAGES
+					{
+						expand: true,
+						cwd: 'assets/images/',
+						src: ['**'],
+						dest: '<%= config.build %>/images/'
+					},
+
+					// CSS
+					{
+						expand: true,
+						cwd: './css/',
+						src: ['**'],
+						dest: '<%= config.build %>/css/'
+					}
+				]
+			}
+		},
+
 		jade: {
 			compile: {
 				options: {
@@ -46,19 +73,25 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: '<%= config.src %>/**/*.js',
-				tasks: ['jade']
+				tasks: ['browserify', 'jade']
 			},
 			jade: {
 				files: '<%= config.src %>/templates/*.jade',
 				tasks: ['jade']
+			},
+			css: {
+				files: 'css/*.css',
+				tasks: ['copy:dev']
 			}
 		}
 	});
 
 	grunt.registerTask('default', [
+		'clean',
 		'browserify',
 		'jade',
-		'connect:dev',
+		'copy',
+		'connect',
 		'watch'
 	]);
 };
