@@ -1,9 +1,31 @@
-var Player = require('../entities/player');
+'use strict';
+
+var Game = function() {};
+
+Game.prototype = {
+
+  create: function() {
+    this.game.add.sprite(0, 0, 'tilesheet1');
+    this.input.onDown.add(this.onDown, this);
+  },
+
+  update: function() {
+
+  },
+
+  onDown: function() {
+    console.log('click');
+  }
+};
+
+module.exports = Game;
+
+
+/*var Player = require('../entities/player');
 
 var Game = function () {
   this.testentity = null;
 };
-
 module.exports = Game;
 
 Game.prototype = {
@@ -41,3 +63,4 @@ Game.prototype = {
     this.game.state.start('Menu');
   }
 };
+*/

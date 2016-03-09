@@ -1,16 +1,32 @@
 'use strict';
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+var Boot = require('./states/boot');
+var Game = require('./states/game');
 
-window.Utils = require('./utils');
-window.playerState = {
-    currentLevel: 'Game'
-}
+var _ = require('lodash');
+var Assets = require('./assets');
 
-game.state.add('Boot', require('./states/boot'));
-game.state.add('Splash', require('./states/splash'));
-game.state.add('Preloader', require('./states/preloader'));
-game.state.add('Menu', require('./states/menu'));
-game.state.add('Game', require('./states/game'));
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', {
+	preload: preload,
+	create: create,
+	// update: update
+});
 
-game.state.start('Boot');
+function preload() {
+	console.log('preload');
+
+	for (var key in Assets.images) {
+		game.load.image(key, Assets.images[key]);
+	}
+};
+
+function create() {
+	game.state.add('Boot', Boot);
+	// preload
+	// splash
+	// intro
+	// menu
+	game.state.add('Game', Game);
+
+	game.state.start('Boot');
+};
