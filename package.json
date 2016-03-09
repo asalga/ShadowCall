@@ -11,7 +11,7 @@
     "url": "git+https://github.com/asalga/ShadowCall.git"
   },
   "author": "Andor Salga",
-  "license": "ISC",
+  "license": "??",
   "bugs": {
     "url": "https://github.com/asalga/ShadowCall/issues"
   },
@@ -23,9 +23,10 @@
     "grunt-contrib-connect": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jade": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "generator-phaser-browserify": "^0.3.6"
   },
   "dependencies": {
-    "phaser": "^2.4.6"
+    "lodash": "^4.6.1"
   }
 }

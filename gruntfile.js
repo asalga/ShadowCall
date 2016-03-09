@@ -11,14 +11,15 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		config: {
+			'assets': 'assets',
 			'src': './src',
 			'build': './build'
 		},
 
 		browserify: {
 			app: {
-				src: ['<%= config.src %>/game/app.js'],
-				dest: '<%= config.build %>/js/app.min.js'
+				src: ['<%= config.src %>/js/main.js'],
+				dest: '<%= config.build %>/js/main.min.js'
 			}
 		},
 
@@ -51,6 +52,14 @@ module.exports = function(grunt) {
 						cwd: './css/',
 						src: ['**'],
 						dest: '<%= config.build %>/css/'
+					},
+
+					// LIBS
+					{
+						expand: true,
+						cwd: './lib/',
+						src: ['**'],
+						dest: '<%= config.build %>/lib/'
 					}
 				]
 			}
