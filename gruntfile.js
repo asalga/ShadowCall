@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					port: 8080,
-					base: '<%= config.build %>'
+					base: './'
 				}
 			}
 		},
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 					data: {}
 				},
 				files: {
-					'<%= config.build %>/index.html': ['<%= config.src %>/templates/index.jade']
+					'index.html': ['<%= config.src %>/templates/index.jade']
 				}
 			}
 		},
