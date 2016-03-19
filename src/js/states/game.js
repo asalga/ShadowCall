@@ -50,7 +50,6 @@ Game.prototype = {
 
     this.row = [];
     
-    var j = 0;
     var tile;
     
     this.marker = this.visibleRows - 1;
@@ -81,8 +80,6 @@ Game.prototype = {
 
         test.position._float_y = y;
         test.position.y = Math.floor(test.position._float_y);
-
-        j++;
       }
     }
 
