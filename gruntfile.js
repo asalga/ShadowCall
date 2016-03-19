@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jade');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	grunt.initConfig({
 
@@ -32,8 +33,22 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// CLEAN
 		clean: ['<%= config.build %>'],
 
+		// UGLIFY
+		uglify: {
+			options: {
+				maxLineLen: 128
+			},
+			target: {
+				files: {
+					'build/js/main.min.js': ['build/js/main.min.js']
+				}
+			}
+		},
+
+		// COPY
 		copy: {
 			dev: {
 				files: [
@@ -43,6 +58,14 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'assets/images/',
 						src: ['**'],
+						dest: '<%= config.build %>/images/'
+					},
+
+					// DATA
+					{
+						expand: true,
+						cwd: 'assets/images/',
+						src: ['*.json'],
 						dest: '<%= config.build %>/images/'
 					},
 
@@ -65,6 +88,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// JADE
 		jade: {
 			compile: {
 				options: {
@@ -76,6 +100,7 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// WATCH
 		watch: {
 			options: {
 				livereload: true
@@ -103,4 +128,12 @@ module.exports = function(grunt) {
 		'connect',
 		'watch'
 	]);
+
+	grunt.registerTask('build', [
+		'clean',
+		'browserify',
+		'jade',
+		'uglify',
+		'copy'
+	])
 };
