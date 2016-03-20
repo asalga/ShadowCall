@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		config: {
-			'assets': 'assets',
+			'assets': './assets',
 			'src': './src',
 			'build': './build'
 		},
@@ -52,7 +52,6 @@ module.exports = function(grunt) {
 		copy: {
 			dev: {
 				files: [
-
 					// IMAGES
 					{
 						expand: true,
@@ -107,7 +106,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: '<%= config.src %>/**/*.js',
-				tasks: ['browserify', 'jade']
+				tasks: ['browserify']
 			},
 			jade: {
 				files: '<%= config.src %>/templates/*.jade',

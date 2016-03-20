@@ -6,18 +6,19 @@ var Utils = {
   },
 
   /*
-      in:  123
-      out: "000123"
+      in:  123, 5
+      out: "00123"
   */
-  addLeadingZeros: function(value, leadingZeros) {
+  addLeadingZeros: function(value, numDigits) {
     var strValue = value.toString();
 
-    while (strValue.length < leadingZeros) {
+    while (strValue.length < numDigits) {
       strValue = '0' + strValue;
     }
 
     return strValue;
   }
+
 };
 
 module.exports = Utils;

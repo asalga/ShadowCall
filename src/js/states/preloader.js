@@ -1,32 +1,117 @@
-var Preloader = function (game) {
-  this.asset = null;
+'use strict';
+
+var Assets = require('../assets');
+
+
+var Preloader = function(game) {
   this.ready = false;
+};
+
+
+Preloader.prototype = {
+
+  preload: function() {
+    console.log('Preloader::preload');
+
+    this.test = this.add.sprite(0, 0, 'test');
+    this.bar = this.add.sprite(101, 52, 'preloadBar');
+    this.load.setPreloadSprite(this.bar);
+
+    // IMAGES
+    for (var key in Assets.images) {
+      this.load.image(key, Assets.images[key]);
+    }
+    // TILESHEETS
+    for (var key in Assets.tilesheets) {
+      this.game.load.atlasJSONHash(key, Assets.tilesheets[key].image, Assets.tilesheets[key].atlas);
+    }
+  },
+
+  create: function() {
+    console.log('Preloader::create');
+
+    this.game.load.onLoadStart.add(this.loadStart, this);
+    this.load.onLoadComplete.add(this.loadComplete, this);
+
+    this.start();
+  },
+
+  start: function() {
+    console.log('Preloader::start');
+    this.game.load.start();
+  },
+
+  loadStart: function() {
+    console.log('Preloader::loadStart');
+  },
+
+  loadComplete: function() {
+    console.log('Preloader::onLoadComplete');
+    this.game.state.start('Game');
+  }
 };
 
 module.exports = Preloader;
 
+/*
+
+
 Preloader.prototype = {
 
-  preload: function () {
+  preload: function() {
+    console.log('Preloader::preload');
+
     this.asset = this.add.sprite(320, 240, 'preloader');
     this.asset.anchor.setTo(0.5, 0.5);
 
-    this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+    this.game.add.sprite(0, 0, 'preloader');
+
+    // IMAGES
+    for (var key in Assets.images) {
+      this.load.image(key, Assets.images[key]);
+    }
+
+    // TILESHEETS
+    for (var key in Assets.tilesheets) {
+      this.load.atlasJSONHash(key, Assets.tilesheets[key].image, Assets.tilesheets[key].atlas);
+    }
+
+    this.game.load.onLoadStart.add(this.loadStart, this);
+    this.game.load.onLoadComplete.addOnce(this.onLoadComplete, this);
+
     this.load.setPreloadSprite(this.asset);
-    this.load.image('testsprite', '../images/test.png');
   },
 
-  create: function () {
-    this.asset.cropEnabled = false;
+  create: function() {
+    console.log('Preloader::create');
+    this.start();
   },
 
-  update: function () {
+  init: function() {
+    console.log('Preloader::init');
+    //this.game.load.onLoadStart.add(this.loadStart, this);
+  },
+
+  start: function() {
+    console.log('Preloader::start');
+  },
+
+  loadStart: function() {
+    console.log('Preloader::loadStart');
+  },
+
+  update: function() {
+    console.log('Preloader::update');
     if (!!this.ready) {
-      this.game.state.start('Menu');
+      this.game.state.start('Game');
     }
   },
 
-  onLoadComplete: function () {
+  onLoadComplete: function() {
+    console.log('onLoadComplete');
     this.ready = true;
   }
 };
+
+module.exports = Preloader;
+*/
