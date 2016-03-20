@@ -2,7 +2,8 @@
 
 var Assets = {
 	images: {
-		tilesheet1: 'build/images/level1_tilesheet.png'
+		tilesheet1: 'build/images/level1_tilesheet.png',
+		'titleScreen': 'build/images/title_screen.png'
 	},
 
 	tilesheets: {

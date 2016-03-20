@@ -1,23 +1,28 @@
 
-* {
-  -webkit-user-select: none;
-  user-select: none;
-  margin: 0;
-}
+// * {
+//   -webkit-user-select: none;
+//   user-select: none;
+//   margin: 0;
+// }
 
 html, body {
-  width: 100%;
-  height: 100%;
+  margin: 0;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #333;
 }
 
-.game {
-  width: 640px;
-  height: 480px;
-  margin: 20px auto;
+// canvas {
+//   margin: 0 auto;
+//   display: block;
+// }
+
+#srcCanvas {
+	z-index: 1;
+	opacity: 1;
+	position: absolute;
 }
 
-h1,h2,h3 {
-  color: #fff;
+#dstCanvas {
+	z-index: 0;
+	position: absolute;
 }
