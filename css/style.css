@@ -18,7 +18,7 @@ html, body {
 
 #srcCanvas {
 	z-index: 1;
-	opacity: 1;
+	opacity: 0.5;
 	position: absolute;
 }
 

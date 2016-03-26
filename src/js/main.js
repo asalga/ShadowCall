@@ -4,11 +4,6 @@ var Boot = require('./states/boot');
 var Preloader = require('./states/preloader');
 var Game = require('./states/game');
 
-/* 
-	Overlay canvases [DONE]
-	Fix preloader []
-*/
-
 var _ = require('lodash');
 var Assets = require('./assets');
 
