@@ -104,8 +104,12 @@ module.exports = function(grunt) {
 			options: {
 				livereload: true
 			},
+			assets: {
+				files: '<%= config.assets %>/**/*',
+				tasks: ['copy:dev']
+			},
 			js: {
-				files: '<%= config.src %>/**/*.js',
+				files: '<%= config.src %>/**/*',
 				tasks: ['browserify']
 			},
 			jade: {

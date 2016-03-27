@@ -12,9 +12,7 @@ Boot.prototype = {
 
     preload: function() {
         console.log('Boot::preload');
-
-        this.load.image('test', 'build/images/loading.png');
-        this.load.image('preloadBar', 'build/images/loadingbar.png');
+        this.load.image('preloadBar', 'build/images/screens/loadingbar.png');
     },
 
     create: function() {

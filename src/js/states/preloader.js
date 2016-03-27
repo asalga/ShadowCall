@@ -2,18 +2,15 @@
 
 var Assets = require('../assets');
 
-
 var Preloader = function(game) {
   this.ready = false;
 };
-
 
 Preloader.prototype = {
 
   preload: function() {
     console.log('Preloader::preload');
 
-    this.test = this.add.sprite(0, 0, 'test');
     this.bar = this.add.sprite(101, 52, 'preloadBar');
     this.load.setPreloadSprite(this.bar);
 
@@ -21,6 +18,14 @@ Preloader.prototype = {
     for (var key in Assets.images) {
       this.load.image(key, Assets.images[key]);
     }
+
+    // SPRITE SHEETS
+    for (var key in Assets.spritesheets) {
+      var sheet = Assets.spritesheets[key];
+
+      this.load.spritesheet(key, sheet.path, sheet.frameWidth, sheet.frameHeight, sheet.frameCount);
+    }
+
     // TILESHEETS
     for (var key in Assets.tilesheets) {
       this.game.load.atlasJSONHash(key, Assets.tilesheets[key].image, Assets.tilesheets[key].atlas);
