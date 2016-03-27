@@ -18,7 +18,6 @@ var Utils = {
 
     return strValue;
   }
-
 };
 
 module.exports = Utils;

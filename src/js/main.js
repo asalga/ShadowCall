@@ -3,12 +3,10 @@
 var Boot = require('./states/boot');
 var Preloader = require('./states/preloader');
 var Game = require('./states/game');
+var Assets = require('./assets');
+var cfg = require('./config');
 
 var _ = require('lodash');
-var Assets = require('./assets');
-
-var baseWidth = 320;
-var baseHeight = 200;
 
 var pixel = {
 	scale: 2,
@@ -19,15 +17,10 @@ var pixel = {
 	height: 0
 };
 
-
-
-
-
-
-
 pixel.game = new Phaser.Game(
-	baseWidth,
-	baseHeight,
+
+	cfg.gameWidth,
+	cfg.gameHeight,
 	Phaser.WEBGL, '', {
 		//preload: preload,
 		create: create,
@@ -38,22 +31,19 @@ pixel.game = new Phaser.Game(
 
 
 function preload() {
-	console.log('preload');	
+	console.log('preload');
 };
 
 
-function render() {
-}
+function render() {}
 
 function blitPixiToCanvas() {
 	pixel.context.drawImage(
 		pixel.game.canvas,
-
 		0, 0,
-		baseWidth, baseHeight,
-
+		cfg.gameWidth, cfg.gameHeight,
 		0, 0,
-		baseWidth * pixel.scale, baseHeight * pixel.scale);
+		cfg.gameWidth * pixel.scale, cfg.gameHeight * pixel.scale);
 }
 
 
@@ -65,16 +55,20 @@ function update() {
 function create() {
 	console.log('create');
 	pixel.game.time.advancedTiming = true;
+	
+	//game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	//pixel.game.canvas.style['display'] = 'none';
 	pixel.game.canvas.id = 'srcCanvas';
 
-	pixel.canvas = Phaser.Canvas.create(null, baseWidth * pixel.scale, baseHeight * pixel.scale);
+	pixel.canvas = Phaser.Canvas.create(null, cfg.gameWidth * pixel.scale, cfg.gameHeight * pixel.scale);
 	pixel.canvas.id = 'dstCanvas';
 
-
 	pixel.context = pixel.canvas.getContext('2d');
-	Phaser.Canvas.addToDOM(pixel.canvas);
+	
+	// Phaser.Canvas.addToDOM(pixel.canvas);
+	var inner = document.getElementsByClassName('inner')[0];
+	inner.appendChild(pixel.canvas);
 
 	pixel.game.device.canvasBitBltShift = false;
 	pixel.game.stage.backgroundColor = "#000000";
@@ -88,10 +82,10 @@ function create() {
 	pixel.game.state.add('Boot', Boot);
 	pixel.game.state.add('Preloader', Preloader);
 	pixel.game.state.add('Game', Game);
-	
+
 	pixel.game.state.start('Boot');
 };
 
 module.exports = {
-	blitPixiToCanvas : blitPixiToCanvas
+	blitPixiToCanvas: blitPixiToCanvas
 };

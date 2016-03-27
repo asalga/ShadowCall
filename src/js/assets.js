@@ -1,16 +1,39 @@
 'use strict';
 
 var Assets = {
+
+	// simple, self-contained images, no animtions
+	staticImages: {
+
+	},
+
 	images: {
-		'titleScreen': 'build/images/title_screen.png'
+		'titleScreen': 'build/images/screens/title_screen.png',
+		'ship': 'build/images/ships/ship.png',
+		'crab': 'build/images/ships/crab.png',
+		'bullet': 'build/images/misc/bullet.jpg'
 	},
 
 	tilesheets: {
-
 		level2: {
-			image: './build/images/level2_tilesheet.png',
-			atlas: './build/images/level2_tilesheet.json'
+			image: 'build/images/levels/level2_tilesheet.png',
+			atlas: 'build/images/levels/level2_tilesheet.json'
 		}
+	},
+
+	spritesheets: {
+		
+		mine: {
+			
+			// animations: {}
+
+			path: 'build/images/ships/mine.png',
+			frameWidth: 14,
+			frameHeight: 14,
+			frameCount: 2
+		}
+
+
 	},
 
 	json: {
