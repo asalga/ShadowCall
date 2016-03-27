@@ -1,28 +1,30 @@
-
-// * {
-//   -webkit-user-select: none;
-//   user-select: none;
-//   margin: 0;
-// }
-
 html, body {
-  margin: 0;
-  overflow: hidden;
-  background-color: #333;
+    margin: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-// canvas {
-//   margin: 0 auto;
-//   display: block;
-// }
-
 #srcCanvas {
-	z-index: 1;
-	opacity: 0.5;
-	position: absolute;
+    z-index: 1;
+    opacity: 0.0;
+    position: absolute;
 }
 
 #dstCanvas {
-	z-index: 0;
-	position: absolute;
+    z-index: 0;
+    flex: 0 1 auto;
+    height: 100%;
+}
+
+.container { 
+	display: flex;
+}
+
+.inner {
+    flex: 0 1 auto;
+    display: flex;
+    position: absolute;
+   // height: 100%;
+     width: 100%;
+    justify-content: center;
 }
