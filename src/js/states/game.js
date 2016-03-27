@@ -20,6 +20,7 @@ Game.prototype = {
     this.TILE_SIZE = 32;
     this.sideBuffer = 16;   // create left and right vertical spacing
     this.pos = 0;           // track how far we have moved the board
+    this.reachedEnd = false;
 
     // Makes working with the level a bit easier
     this._2dMap = [];
@@ -91,6 +92,10 @@ Game.prototype = {
     then iterate upwards moving each row down
   */
   update: function() {
+    if(this.reachedEnd){
+      return;
+    }
+    
     this.pos += this.tilesPerSecond;
     this.g.position.y = Math.floor(this.pos);
 
@@ -121,6 +126,11 @@ Game.prototype = {
     */
   recycleRow: function(rowIndex) {
     this.nextRowMarker--;
+
+    if(this.nextRowMarker < 0){
+      this.reachedEnd = true;
+      return;
+    }
 
     for (var i = 0; i < this.tilesPerRow; i++) {
       this.visibleTiles[rowIndex][i].position.y -= 8 * 32;
