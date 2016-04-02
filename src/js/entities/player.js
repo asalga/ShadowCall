@@ -123,4 +123,8 @@ Player.prototype.keepInBounds = function() {
 	}
 };
 
+Player.prototype.collision = function(other){
+	console.log(other);
+};
+
 module.exports = Player;
