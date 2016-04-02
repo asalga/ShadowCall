@@ -1,3 +1,9 @@
+'use strict';
+
+/*
+
+*/
+
 module.exports = function(grunt) {
 	'use strict';
 
@@ -11,10 +17,12 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
+		// Don't prefix with  "./" If you do, grunt watch
+		// won't watch newly added dirs and files.
 		config: {
-			'assets': './assets',
-			'src': './src',
-			'build': './build'
+			'assets': 'assets',
+			'src': 'src',
+			'build': 'build'
 		},
 
 		browserify: {

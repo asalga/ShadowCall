@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 	General game config
 */
@@ -11,7 +13,7 @@ var Config = {
 	// GAME
 	gameWidth: 320,
 	gameHeight: 200,
-	gameScale: 2,
+	gameScale: 3,
 
 	// PLAYER
 	godMode: false,

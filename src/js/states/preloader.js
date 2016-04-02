@@ -59,8 +59,6 @@ Preloader.prototype = {
 module.exports = Preloader;
 
 /*
-
-
 Preloader.prototype = {
 
   preload: function() {
@@ -117,6 +115,4 @@ Preloader.prototype = {
     this.ready = true;
   }
 };
-
-module.exports = Preloader;
 */
