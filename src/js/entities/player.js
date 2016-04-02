@@ -2,19 +2,19 @@
 
 var cfg = require('../config');
 
+var KeyboardJS = require('KeyboardJS');
 var _ = require('lodash');
 
 /*
  
-*/
-var Player = function(game, x, y) {
+ */
+var Player = function(game) {
 
-	Phaser.Sprite.call(this, game, x, y, 'ship');
-	game.add.existing(this);
+	Phaser.Sprite.call(this, game, cfg.gameWidth / 2, cfg.gameHeight / 2, 'raptor');
+	var thisSprite = game.add.existing(this);
 
-	// var mine = this.game.add.sprite(0, 0, 'mine');
-	// var idle = mine.animations.add('idle', [0, 1], true);
-	// idle.play(2, true);
+	this.animations.add('idle', [0, 1], 2, true);
+	this.animations.add('fire', [3, 4], 18, true);
 
 	// props
 	this.health = 0;
@@ -22,9 +22,22 @@ var Player = function(game, x, y) {
 	this.fireRate = cfg.fireRate;
 	this.bulletPool = [];
 	this.nextFire = 0;
+	this.isFiring = false;
+
+	game.physics.enable(this, Phaser.Physics.ARCADE);
+	this.body.setSize(this.width, this.height);
+	this.body.immovable = false;
 
 	this.createBulletPool(50);
 	// this.resetHealth();
+
+	KeyboardJS.bind('spacebar', function(e) {
+		this.isFiring = true;
+		this.animations.play('fire');
+	}.bind(this), function(e) {
+		this.isFiring = false;
+		this.animations.play('idle');
+	}.bind(this));
 
 	window.player = this;
 };
@@ -50,7 +63,10 @@ Player.prototype.update = function() {
 		this.y += cfg.moveSpeed;
 	}
 
-	if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+	// if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+	// 	this.fire();
+	// }
+	if(this.isFiring){
 		this.fire();
 	}
 

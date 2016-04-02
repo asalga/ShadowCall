@@ -11,7 +11,7 @@
     "url": "git+https://github.com/asalga/ShadowCall.git"
   },
   "author": "Andor Salga",
-  "license": "??",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/asalga/ShadowCall/issues"
   },
@@ -29,6 +29,7 @@
     "yo": "^1.7.0"
   },
   "dependencies": {
+    "keyboardjs": "^2.2.0",
     "lodash": "^4.6.1"
   }
 }

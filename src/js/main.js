@@ -9,7 +9,7 @@ var cfg = require('./config');
 var _ = require('lodash');
 
 var pixel = {
-	scale: 2,
+	scale: cfg.gameScale,
 	game: null,
 	canvas: null,
 	context: null,

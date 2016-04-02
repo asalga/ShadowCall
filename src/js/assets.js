@@ -9,7 +9,6 @@ var Assets = {
 
 	images: {
 		'titleScreen': 'build/images/screens/title_screen.png',
-		'ship': 'build/images/ships/ship.png',
 		'crab': 'build/images/ships/crab.png',
 		'bullet': 'build/images/misc/bullet.jpg'
 	},
@@ -24,16 +23,18 @@ var Assets = {
 	spritesheets: {
 		
 		mine: {
-			
-			// animations: {}
-
 			path: 'build/images/ships/mine.png',
 			frameWidth: 14,
 			frameHeight: 14,
 			frameCount: 2
+		},
+
+		raptor: {
+			'path': 'build/images/ships/raptor.png',
+			frameWidth: 27,
+			frameHeight: 31,
+			frameCount: 6 // should we calculate this at runtime?
 		}
-
-
 	},
 
 	json: {
