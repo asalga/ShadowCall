@@ -12,19 +12,13 @@ html, body {
 
 #dstCanvas {
     z-index: 0;
-    flex: 0 1 auto;
-    height: 100%;
-}
 
-.container { 
-	display: flex;
-}
-
-.inner {
-    flex: 0 1 auto;
-    display: flex;
+    border: 1px solid black;
+    margin: auto;
     position: absolute;
-   // height: 100%;
-     width: 100%;
-    justify-content: center;
+
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
