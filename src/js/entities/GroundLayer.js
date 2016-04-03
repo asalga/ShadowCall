@@ -31,7 +31,7 @@ BackgroundLayer.prototype.init = function(){
 
 	// We have the level represented as a 1d array, we need to 
 	// convert it into a 2d map
-	this.create2DMap(Assets.json.level2);
+	this.create2DMap(Assets.json.level2.slice());
 
 	this.totalRows = this._2dMap.length;
 
@@ -78,7 +78,7 @@ BackgroundLayer.prototype.init = function(){
     place this in a 2d array for easier reading.
 */
 BackgroundLayer.prototype.create2DMap = function(_1dArray) {
-	var arr = _1dArray.splice(0);
+	var arr = _1dArray;
 	while (arr.length) {
 		this._2dMap.push(arr.splice(0, this.tilesPerRow));
 	}

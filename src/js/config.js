@@ -8,7 +8,7 @@ var Config = {
 
 	// META
 	version: 0.1,
-	debug: true,
+	debug: false,
 
 	// GAME
 	gameWidth: 320,

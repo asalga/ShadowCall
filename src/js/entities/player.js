@@ -13,6 +13,10 @@ var Player = function(game) {
 	Phaser.Sprite.call(this, game, cfg.gameWidth / 2, cfg.gameHeight / 2, 'raptor');
 	var thisSprite = game.add.existing(this);
 
+
+	this.name = 'player';
+
+
 	this.animations.add('idle', [0, 1], 2, true);
 	this.animations.add('fire', [3, 4], 18, true);
 

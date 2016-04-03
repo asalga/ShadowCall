@@ -30,10 +30,17 @@ var Assets = {
 		},
 
 		raptor: {
-			'path': 'build/images/ships/raptor.png',
+			path: 'build/images/ships/raptor.png',
 			frameWidth: 27,
 			frameHeight: 31,
 			frameCount: 6 // should we calculate this at runtime?
+		},
+
+		coin: {
+			path: 'build/images/misc/coin.png',
+			frameWidth: 28,
+			frameHeight: 28,
+			frameCount: 2
 		}
 	},
 

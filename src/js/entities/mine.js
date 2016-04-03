@@ -6,13 +6,12 @@ var _ = require('lodash');
 /*
 	Follows and tries to collide with the player
 
-	opts: game, gameState
+	opts: mainGame, gameState
  */
-var Mine = function(game, gameState) {
-	// _.defaults(this, opts);
-	this.game = game;
+var Mine = function(opts) {
+	_.defaults(this, opts);
 	
-	Phaser.Sprite.call(this, this.game, 100, 100, 'mine');
+	Phaser.Sprite.call(this, this.mainGame, 100, 100, 'mine');
 	var mineSprite = this.game.add.existing(this);
 
 	this.properties = {
@@ -39,6 +38,10 @@ Mine.prototype.render = function() {
 
 Mine.prototype.collision = function(other){
 
+	if(other.name === 'player'){
+		this.gameState.killPlayer();
+	}
+	
 	// turn off collision detection
 	// play animation
 	// update score in HUD
